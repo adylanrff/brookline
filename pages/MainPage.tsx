@@ -1,20 +1,16 @@
 import styles from '../styles/Home.module.css'
+import BaseSection from './section/BaseSection'
+import DetailSection from './section/DetailSection'
 
 export default function MainPage() {
   return (
-    <div className={styles.container}>
-        <div className={styles.sidebar}>
-            <div className={styles.logo}>
-                <img className={styles.logoImg} src='/brookline.png' />
-                <p className={styles.logoText}>Brookline</p>
-            </div>
-        </div>
-        <div className={styles.base}>
-
-        </div>
-        <div className={styles.detail}>
-
-        </div>
+    <div className="p-0 min-h-screen bg-[#E7F4FF] flex-1 flex flex-row justify-evenly">
+      <div className='flex-5 bg-slate-200 text-center'>
+        <BaseSection />
+      </div>
+      <div className='flex-4 text-center'>
+        <DetailSection />
+      </div>
     </div>
   )
 }
