@@ -6,7 +6,8 @@ module.exports = {
   ],
   theme: {
     fontFamily: {
-      'title': ["Grand Hotel", 'cursive']
+      'title': ["Grand Hotel", 'cursive'],
+      'body': ["Nunito", 'cursive']
     },
     extend: {
       flex: {
