@@ -3,6 +3,7 @@ module.exports = {
   content: [
     "./pages/**/*.{js,ts,jsx,tsx}",
     "./components/**/*.{js,ts,jsx,tsx}",
+    "./*.html", "./ecommerce/*.html", "./assets/**/*.js"
   ],
   theme: {
     fontFamily: {
@@ -18,5 +19,5 @@ module.exports = {
       }
     },
   },
-  plugins: [],
+  plugins: [require("tailgrids/plugin")],
 }

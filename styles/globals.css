@@ -18,3 +18,8 @@ a {
 * {
   box-sizing: border-box;
 }
+
+.detail-box-animation {
+  transition: right .3s ease-in-out;
+  -webkit-transition: right .3s ease-in-out;
+}
