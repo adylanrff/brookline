@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from 'react'
-import styles from '../styles/Home.module.css'
 import BaseSection from './section/BaseSection'
 import DetailSection from './section/DetailSection'
 
@@ -24,9 +23,9 @@ export default function MainPage() {
 
   useEffect(() => {
     if (showDetail) {
-      setBasePageWidth('65%')
+      setBasePageWidth('w-full lg:w-[65%]')
     } else {
-      setBasePageWidth('100%')
+      setBasePageWidth('lg:w-full')
     }
   }, [showDetail])
 
@@ -37,8 +36,8 @@ export default function MainPage() {
       showDetail,
       setShowDetail
     }}>
-        <div className="p-0 min-h-screen bg-[#E7F4FF] w-[calc(100%_-_13rem)] ml-52">
-          <div style={{width: `${basePageWidth}`}} className='p-7'>
+        <div className="p-0 min-h-screen bg-[#E7F4FF] w-full lg:w-[calc(100%_-_13rem)] lg:ml-52 mt-14 lg:mt-0">
+          <div className={'px-7 py-5 lg:p-7 ' + basePageWidth}>
             <BaseSection />
           </div>
           <DetailSection />

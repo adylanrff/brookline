@@ -23,3 +23,8 @@ a {
   transition: right .3s ease-in-out;
   -webkit-transition: right .3s ease-in-out;
 }
+
+.side-bar-animation {
+  transition: left .3s ease-in-out;
+  -webkit-transition: left .3s ease-in-out;
+}

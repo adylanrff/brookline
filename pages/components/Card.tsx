@@ -11,7 +11,7 @@ function Card({ data }) {
     }
 
     return (
-        <div className='shadow-md bg-[white] rounded-lg hover:cursor-pointer' onClick={handleClick}>
+        <div className='shadow-md bg-[white] rounded-lg hover:cursor-pointer w-full md:w-[calc(50%_-_14px)] lg:w-fit' onClick={handleClick}>
             <div className='flex p-4 items-center gap-5'>
                 <div className='flex-1'>
                     <p className='font-body text-sm'>ID Kapal</p>
