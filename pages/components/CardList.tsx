@@ -10,8 +10,8 @@ function CardList({ departureCity, arrivalCity }) {
         if (data.length === 0) {
             return (
                 <div className='my-12 w-full h-full flex flex-col gap-3 items-center justify-center'>
-                    <img className='w-[150px]' src='/no-result.png' />
-                    <p className='font-body'>Mohon maaf tidak tersedia kapal pada rute ini</p>
+                    <img className='w-[100px] lg:w-[120px]' src='/no-result.png' />
+                    <p className='font-body text-center'>Mohon maaf tidak tersedia kapal pada rute ini</p>
                 </div>
             )
         } else {
