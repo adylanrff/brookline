@@ -41,17 +41,11 @@ function BaseSection() {
     const handleSortByOnChange = (e) => {
         const { value } = e.target
         setSortBy(value)
+        const sortedData = [...data].sort((a, b) => {
+            return ('' + a[value]).localeCompare(b[value]);
+        })
+        setData(sortedData)
     }
-
-    useEffect(() => {
-        if (data && data.length) {
-            console.log(data,'data')
-            data.sort((a,b) => {
-                return ('' + a[sortBy]).localeCompare(b[sortBy]);
-            })
-            setData(data)
-        }
-    }, [sortBy])
 
     return (
         <div>
