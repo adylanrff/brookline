@@ -2,6 +2,7 @@ import React, { useContext } from 'react'
 import { CurrentShipContext } from '../MainPage'
 import { useTranslation } from "react-i18next";
 import { ShipCard } from "../../types/ship";
+import Image from 'next/image';
 
 interface Props {
     data: ShipCard
@@ -32,7 +33,7 @@ function Card({ data = {} }: Props) {
                     <p className='font-body text-sm'>{t('shipList-card-shipID')}</p>
                     <p className='font-body font-semibold w-fit'>{id}</p>
                 </div>
-                <img className='w-[100px]' src={imgUrl} />
+                <Image width={100} alt="ship" className='w-[100px]' src={imgUrl} />
             </div>
             <hr className='border-[#DEDEDE]' />
             <div className='my-4 flex flex-col gap-4'>
