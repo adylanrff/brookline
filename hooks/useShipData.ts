@@ -199,9 +199,9 @@ export default function useShipData(departureCity: string, arrivalCity: string):
             routes: [{
                 id: 1,
                 departureCity: 'Surabaya',
-                departurePort: 'Benoa',
+                departurePort: 'Tanjung Perak',
                 arrivalCity: 'Bali',
-                arrivalPort: 'Gili Manuk',
+                arrivalPort: 'Benoa',
                 schedule: [{
                     departureTime: '09.15',
                     arrivalTime: '10.45',

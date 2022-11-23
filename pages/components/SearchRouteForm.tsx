@@ -13,7 +13,7 @@ function SearchRouteForm({ onSubmit, onReset, onReverse }) {
 
     return (
         <form onSubmit={onSubmit} className='flex gap-3 flex-wrap'>
-            <select name='departure' value={routeForm.departure} onChange={onSelectChange} className='px-2 py-1 font-body border-[1.5px] border-slate-400 rounded-lg w-full md:w-1/3 lg:w-[250px] hover:cursor-pointer' placeholder='Asal'>
+            <select name='departure' value={routeForm.departure} onChange={onSelectChange} className='px-2 py-1 font-body border-[1.5px] border-slate-400 rounded-lg w-full md:w-1/3 lg:w-[250px] hover:cursor-pointer bg-white' placeholder='Asal'>
                 <option value="" disabled hidden>{t('shipList-form-chooseDeparture')}</option>
                 <option value={'Surabaya'}>Surabaya</option>
                 <option value={'Jakarta'}>Jakarta</option>
@@ -22,7 +22,7 @@ function SearchRouteForm({ onSubmit, onReset, onReverse }) {
             <span onClick={onReverse} className='flex items-center justify-center w-full md:w-fit'>
                 <img className='w-5 hover:cursor-pointer' src='/reverse.png' />
             </span>
-            <select name='arrival' value={routeForm.arrival} onChange={onSelectChange} className='px-2 py-1 font-body border-[1.5px] border-slate-400 rounded-lg w-full md:w-1/3 lg:w-[250px] hover:cursor-pointer' placeholder='Tujuan'>
+            <select name='arrival' value={routeForm.arrival} onChange={onSelectChange} className='px-2 py-1 font-body border-[1.5px] border-slate-400 rounded-lg w-full md:w-1/3 lg:w-[250px] hover:cursor-pointer bg-white' placeholder='Tujuan'>
                 <option value="" disabled hidden>{t('shipList-form-chooseArrival')}</option>
                 <option value={'Surabaya'}>Surabaya</option>
                 <option value={'Jakarta'}>Jakarta</option>

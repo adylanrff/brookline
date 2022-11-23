@@ -42,6 +42,7 @@ export default function Home() {
     <div className={styles.container}>
       <Head>
         <title>{headTitle}</title>
+        <meta name="color-scheme" content="light only"></meta>
       </Head>
       <main>
         <RouteFormContext.Provider value={{
