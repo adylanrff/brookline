@@ -6,7 +6,7 @@ import { useTranslation } from "react-i18next";
 
 function BaseSection() {
     const { t } = useTranslation();
-    const {routeForm, setRouteForm } = useContext(RouteFormContext)
+    const { routeForm, setRouteForm } = useContext(RouteFormContext)
 
     const [departureCity, setDepartureCity] = useState(routeForm.departure)
     const [arrivalCity, setArrivalCity] = useState(routeForm.arrival)

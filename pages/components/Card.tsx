@@ -1,11 +1,16 @@
 import React, { useContext } from 'react'
 import { CurrentShipContext } from '../MainPage'
 import { useTranslation } from "react-i18next";
+import { ShipCard } from "../../types/ship";
 
-function Card({ data }) {
+interface Props {
+    data: ShipCard
+}
+
+function Card({ data = {} }: Props) {
     const { t, i18n } = useTranslation()
     const currentShip = useContext(CurrentShipContext)
-    const {id, imgUrl, departureCity, departurePort, arrivalCity, arrivalPort, departureTime, arrivalTime, containerLeft } = data
+    const { id, imgUrl, departureCity, departurePort, arrivalCity, arrivalPort, departureTime, arrivalTime, containerLeft } = data
 
     const generatePort = (port) => {
         if (i18n.language === 'en') {
@@ -14,7 +19,7 @@ function Card({ data }) {
             return 'Pelabuhan ' + port
         }
     }
-    
+
     const handleClick = () => {
         currentShip.setShip(data)
         currentShip.setShowDetail(true)

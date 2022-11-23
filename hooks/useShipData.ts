@@ -1,7 +1,8 @@
 import { useEffect, useState } from "react";
+import { ShipCard, ShipData } from "../types/ship";
 
-export default function useShipData(departureCity, arrivalCity) {
-    const defaultData = [
+export default function useShipData(departureCity: string, arrivalCity: string): [ShipCard[]] {
+    const defaultData: ShipData[] = [
         {
             id: "L5HYXX8FKV",
             IMONumber: "L5HYXX8FKV",
@@ -139,7 +140,7 @@ export default function useShipData(departureCity, arrivalCity) {
                     containerFilled: 62
                 }]
             }],
-        },  {
+        }, {
             id: "D2ZTBV56V6",
             IMONumber: "D2ZTBV56V6",
             name: "Ever Golden",
@@ -238,15 +239,15 @@ export default function useShipData(departureCity, arrivalCity) {
         }
     ]
 
-    const [data, setData] = useState([]);
+    const [data, setData] = useState<ShipCard[]>();
 
     const mapData = (filtered, departure, arrival) => {
-        let newFiltered = []
-        for (let i=0; i < filtered.length; i++) {
+        let newFiltered: ShipData[] = []
+        for (let i = 0; i < filtered.length; i++) {
             const routes = filtered[i].routes || []
-            for (let j=0; j < routes.length; j++) {
+            for (let j = 0; j < routes.length; j++) {
                 const schedules = routes[j].schedule
-                for (let k=0; k < schedules.length; k++) {
+                for (let k = 0; k < schedules.length; k++) {
                     const shipData = filtered[i]
                     const routeData = filtered[i].routes[j]
                     let isSameRoute
@@ -261,7 +262,7 @@ export default function useShipData(departureCity, arrivalCity) {
                     const shouldBeFiltered = isSameRoute || isNoFilter
                     if (shouldBeFiltered) {
                         const scheduleData = filtered[i].routes[j].schedule[k]
-                        const data = {
+                        const data: ShipCard = {
                             id: shipData.id,
                             IMONumber: shipData.IMONumber,
                             name: shipData.name,
@@ -289,7 +290,7 @@ export default function useShipData(departureCity, arrivalCity) {
 
     // TODO: fetch data
     useEffect(() => {
-        let filteredShipData
+        let filteredShipData: ShipData[]
         if (departureCity === '' && arrivalCity === '') {
             filteredShipData = [...defaultData]
         } else {

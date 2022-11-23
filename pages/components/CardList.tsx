@@ -9,7 +9,7 @@ function CardList({ departureCity, arrivalCity }) {
     const [data] = useShipData(departureCity, arrivalCity)
 
     const renderContent = () => {
-        if (data.length === 0) {
+        if (data?.length === 0) {
             return (
                 <div className='my-12 w-full h-full flex flex-col gap-3 items-center justify-center'>
                     <img className='w-[100px] lg:w-[120px]' src='/no-result.png' />
@@ -23,7 +23,7 @@ function CardList({ departureCity, arrivalCity }) {
 
     const renderCards = () => {
         return (
-            data.map((shipData, index) => (
+            data?.map((shipData, index) => (
                 <Card key={index} data={shipData} />
             ))
         )

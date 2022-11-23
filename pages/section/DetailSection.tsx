@@ -2,19 +2,14 @@ import React, { useContext, useEffect, useState } from 'react'
 import { CurrentShipContext } from '../MainPage'
 import { openInNewTab } from '../../utils/urls'
 import { useTranslation } from "react-i18next";
+import { ShipCard, ShipData } from '../../types/ship';
 
 function DetailSection() {
     const { t, i18n } = useTranslation()
     const currentShip = useContext(CurrentShipContext)
-    const [data, setData] = useState({})
+    const [data, setData] = useState<ShipCard>({})
     const [capacityPercentage, setCapacityPercentage] = useState('')
     const [detailContentPosition, setDetailContentPosition] = useState('0')
-
-    const isEmpty = (obj) => {
-        return obj // 👈 null and undefined check
-            && Object.keys(obj).length === 0
-            && Object.getPrototypeOf(obj) === Object.prototype
-    }
 
     const handleCloseButtonClick = () => {
         currentShip.setShowDetail(false)
@@ -38,7 +33,7 @@ function DetailSection() {
 
     useEffect(() => {
         setData(currentShip.ship)
-        const percentage = currentShip.ship.containerFilled/currentShip.ship.totalContainer*100
+        const percentage = currentShip.ship.containerFilled / currentShip.ship.totalContainer * 100
         const parsePercentage = parseFloat(percentage.toString()).toFixed(2)
         setCapacityPercentage(parsePercentage)
 
@@ -51,10 +46,10 @@ function DetailSection() {
 
     return (
         <div>
-            {!isEmpty(data) && currentShip.showDetail &&
+            {!!data && currentShip.showDetail &&
                 <div className='bg-black z-10 opacity-50 fixed top-0 left-0 w-[100vw] h-[100vh] lg:hidden' />
             }
-            {!isEmpty(data) && currentShip.showDetail &&
+            {!!data && currentShip.showDetail &&
                 <div className={'detail-box-animation fixed w-full md:w-[60%] lg:w-[35%] z-30 h-full xs:px-5 px-7 pt-4 py-7 top-0 bg-white overflow-scroll ' + detailContentPosition}>
                     <div>
                         <div className='mb-7 sticky -top-5 flex justify-between items-center bg-white w-full py-3 gap-3 z-20'>
@@ -67,14 +62,14 @@ function DetailSection() {
                         <div className="w-full px-2">
                             <div className="mb-7">
                                 <div className="bg-light relative h-[10px] w-full rounded-2xl">
-                                    <div style={{width: `${capacityPercentage}%`}} className="bg-primary absolute top-0 left-0 h-full rounded-2xl">
+                                    <div style={{ width: `${capacityPercentage}%` }} className="bg-primary absolute top-0 left-0 h-full rounded-2xl">
                                         <span
-                                        className="bg-primary absolute -right-4 bottom-full mb-2 rounded-sm py-1 px-2 text-xs font-semibold text-white"
+                                            className="bg-primary absolute -right-4 bottom-full mb-2 rounded-sm py-1 px-2 text-xs font-semibold text-white"
                                         >
-                                        <span
-                                            className="bg-primary absolute bottom-[-2px] left-1/2 -z-10 h-2 w-2 -translate-x-1/2 rotate-45 rounded-sm"
-                                        ></span>
-                                        {capacityPercentage}%
+                                            <span
+                                                className="bg-primary absolute bottom-[-2px] left-1/2 -z-10 h-2 w-2 -translate-x-1/2 rotate-45 rounded-sm"
+                                            ></span>
+                                            {capacityPercentage}%
                                         </span>
                                     </div>
                                 </div>
