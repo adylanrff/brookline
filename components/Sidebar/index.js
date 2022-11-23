@@ -1,9 +1,31 @@
 import React, { useEffect, useState } from 'react'
+import { useTranslation } from "react-i18next";
 
-function Sidebar({ showSideBarMobile, setShowSideBarMobile }) {
+function Sidebar({ showSideBarMobile, setShowSideBarMobile, isActive, setIsActive }) {
+    const { t } = useTranslation()
     const [sideBarPosition, setSideBarPosition] = useState('-left-52')
+    const [activeClass, setActiveClass] = useState({
+        home: ' bg-[#003A6C]',
+        language: ''
+    })
 
     const handleBgOnClick = () => {
+        setShowSideBarMobile(false)
+    }
+
+    const handleHomeClick = () => {
+        setIsActive({
+            home: true,
+            language: false
+        })
+        setShowSideBarMobile(false)
+    }
+
+    const handleLanguageClick = () => {
+        setIsActive({
+            home: false,
+            language: true
+        })
         setShowSideBarMobile(false)
     }
 
@@ -14,6 +36,20 @@ function Sidebar({ showSideBarMobile, setShowSideBarMobile }) {
             setSideBarPosition('-left-52')
         }
     }, [showSideBarMobile])
+
+    useEffect(() => {
+        if (isActive.home) {
+            setActiveClass({
+                home: ' bg-[#003A6C]',
+                language: ''
+            })
+        } else if (isActive.language) {
+            setActiveClass({
+                home: '',
+                language: ' bg-[#003A6C]'
+            })
+        }
+    }, [isActive])
 
     return (
         <div>
@@ -26,10 +62,16 @@ function Sidebar({ showSideBarMobile, setShowSideBarMobile }) {
                 <div>
                     <hr className='border-[1px] border-[#003A6C] w-52' />
                 </div>
-                <div className='flex flex-col gap-5'>
-                    <div className='flex gap-3 justify-center bg-[#003A6C] p-5'>
+                <div onClick={handleHomeClick} className='flex flex-col gap-5'>
+                    <div className={'flex gap-3 justify-center p-5 hover:bg-[#003A6C] hover:cursor-pointer'+activeClass.home}>
                         <img className="w-6" src='/list.png' />
-                        <p className="font-body text-[#EDF2F8] text-base">Daftar Kapal</p>
+                        <p className="font-body text-[#EDF2F8] text-base">{t('sidebar-shipList')}</p>
+                    </div>
+                </div>
+                <div onClick={handleLanguageClick} className='flex flex-col gap-5'>
+                    <div className={'flex gap-3 justify-center hover:bg-[#003A6C] hover:cursor-pointer p-5'+activeClass.language}>
+                        <img className="w-6" src='/translation.png' />
+                        <p className="font-body text-[#EDF2F8] text-base">{t('sidebar-language')}</p>
                     </div>
                 </div>
             </div>

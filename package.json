@@ -9,9 +9,13 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "i18next": "^22.0.6",
+    "i18next-browser-languagedetector": "^7.0.1",
+    "i18next-xhr-backend": "^3.2.2",
     "next": "13.0.3",
     "react": "18.2.0",
     "react-dom": "18.2.0",
+    "react-i18next": "^12.0.0",
     "tailgrids": "^2.0.0"
   },
   "devDependencies": {

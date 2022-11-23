@@ -1,0 +1,21 @@
+{
+    "sidebar-shipList": "Daftar Kapal",
+    "sidebar-language": "Bahasa",
+    "shipList-title": "Manajemen Kontainer Kapal",
+    "shipList-form-route": "Rute",
+    "shipList-form-chooseDeparture": "Pilih Kota Asal",
+    "shipList-form-chooseArrival": "Pilih Kota Tujuan",
+    "shipList-form-searchButton": "Cari",
+    "shipList-form-resetButton": "Atur Ulang",
+    "shipList-card-shipID": "ID Kapal",
+    "shipList-card-schedule": "Jadwal",
+    "shipList-card-containerLeft": "Sisa Kontainer",
+    "shipList-card-sorry": "Mohon maaf tidak tersedia kapal pada rute ini",
+    "detail-capacity": "Kapasitas Kapal",
+    "detail-IMONumber": "Nomor IMO",
+    "detail-ownerName": "Nama Pemilik Kapal",
+    "detail-filledContainer": "Kontainer yang telah terisi",
+    "detail-shipRoute": "Rute Kapal",
+    "detail-contact": "Hubungi",
+    "language-setting-title": "Pengaturan Bahasa"
+}

@@ -13,9 +13,9 @@ export default function useShipData(departureCity, arrivalCity) {
             routes: [{
                 id: 1,
                 departureCity: 'Surabaya',
-                departurePort: 'Pelabuhan Tanjung Perak',
+                departurePort: 'Tanjung Perak',
                 arrivalCity: 'Bali',
-                arrivalPort: 'Pelabuhan Gili Manuk',
+                arrivalPort: 'Gili Manuk',
                 schedule: [{
                     departureTime: '10.00',
                     arrivalTime: '11.00',
@@ -48,9 +48,9 @@ export default function useShipData(departureCity, arrivalCity) {
             routes: [{
                 id: 1,
                 departureCity: 'Surabaya',
-                departurePort: 'Pelabuhan Tanjung Perak',
+                departurePort: 'Tanjung Perak',
                 arrivalCity: 'Depok',
-                arrivalPort: 'Pelabuhan ABCDE',
+                arrivalPort: 'ABCDE',
                 schedule: [{
                     departureTime: '10.00',
                     arrivalTime: '11.00',

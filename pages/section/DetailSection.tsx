@@ -1,8 +1,10 @@
 import React, { useContext, useEffect, useState } from 'react'
 import { CurrentShipContext } from '../MainPage'
 import { openInNewTab } from '../../utils/urls'
+import { useTranslation } from "react-i18next";
 
 function DetailSection() {
+    const { t, i18n } = useTranslation()
     const currentShip = useContext(CurrentShipContext)
     const [data, setData] = useState({})
     const [capacityPercentage, setCapacityPercentage] = useState(0)
@@ -24,6 +26,14 @@ function DetailSection() {
 
     const onClickFacebook = () => {
         openInNewTab(data.facebookCP)
+    }
+
+    const generatePort = (port) => {
+        if (i18n.language === 'en') {
+            return port + ' Port'
+        } else if (i18n.language === 'id') {
+            return 'Pelabuhan ' + port
+        }
     }
 
     useEffect(() => {
@@ -49,7 +59,7 @@ function DetailSection() {
                         <img className="w-6 absolute top-0 left-0 hover:cursor-pointer" onClick={handleCloseButtonClick} src='/previous.png' />
                         <p className='font-body text-[24px] font-bold mb-7 text-right'>{data.id}</p>
                         <img className='mb-5' src={data.imgUrl} />
-                        <p className='font-body font-semibold text-[18px] mb-7'>Kapasitas Kapal</p>
+                        <p className='font-body font-semibold text-[18px] mb-7'>{t('detail-capacity')}</p>
                         {/* Progress Bar */}
                         <div className="w-full px-4">
                             <div className="mb-7">
@@ -70,28 +80,28 @@ function DetailSection() {
                         {/* First Row */}
                         <div className='flex gap-5 mb-5 text-sm'>
                             <div className='px-5 py-3 bg-[#F5F5F5] rounded-lg shadow-md'>
-                                <p className='font-body'>Nomor IMO</p>
+                                <p className='font-body'>{t('detail-IMONumber')}</p>
                                 <p className='font-body font-bold'>{data.IMONumber}</p>
                             </div>
                             <div className='px-5 py-3 bg-[#F5F5F5] rounded-lg shadow-md'>
-                                <p className='font-body'>Nama Pemilik Kapal</p>
+                                <p className='font-body'>{t('detail-ownerName')}</p>
                                 <p className='font-body font-bold'>{data.ownerName}</p>
                             </div>
                         </div>
                         <div className='flex gap-5 mb-5 text-sm'>
                             <div className='px-5 py-3 bg-[#F5F5F5] rounded-lg shadow-md'>
-                                <p className='font-body'>Kontainer yang telah terisi</p>
+                                <p className='font-body'>{t('detail-filledContainer')}</p>
                                 <p className='font-body font-bold'>{`${data.containerFilled}/${data.totalContainer}`}</p>
                             </div>
                             <div className='px-5 py-3 bg-[#F5F5F5] rounded-lg shadow-md'>
-                                <p className='font-body'>Sisa Kontainer</p>
+                                <p className='font-body'>{t('shipList-card-containerLeft')}</p>
                                 <p className='font-body font-bold'>{data.containerLeft}</p>
                             </div>
                         </div>
                         {/* Second Row */}
                         <div className='flex gap-5 text-sm mb-7'>
                             <div className='px-5 py-3 bg-[#F5F5F5] rounded-lg shadow-md'>
-                                <p className='font-body'>Rute Kapal</p>
+                                <p className='font-body'>{t('detail-shipRoute')}</p>
                                 <div className='my-4 flex flex-col gap-4'>
                                     <div className='flex items-center gap-3'>
                                         <div>
@@ -99,7 +109,7 @@ function DetailSection() {
                                         </div>
                                         <div>
                                             <p className='font-body'>{data.departureCity}</p>
-                                            <p className='font-body font-bold'>{data.departurePort}</p>
+                                            <p className='font-body font-bold'>{generatePort(data.departurePort)}</p>
                                         </div>
                                     </div>
                                     <div className='flex items-center gap-3'>
@@ -108,13 +118,13 @@ function DetailSection() {
                                         </div>
                                         <div>
                                             <p className='font-body'>{data.arrivalCity}</p>
-                                            <p className='font-body font-bold'>{data.arrivalPort}</p>
+                                            <p className='font-body font-bold'>{generatePort(data.arrivalPort)}</p>
                                         </div>
                                     </div>
                                 </div>
                             </div>
                             <div className='text-sm px-5 py-3 bg-[#F5F5F5] rounded-lg shadow-md h-fit'>
-                                <p className='font-body'>Jadwal</p>
+                                <p className='font-body'>{t('shipList-card-schedule')}</p>
                                 <p className='font-body font-bold'>{`${data.departureTime}-${data.arrivalTime}`}</p>
                             </div>
                         </div>
@@ -122,11 +132,11 @@ function DetailSection() {
                         <div className='flex flex-col gap-3'>
                             <button onClick={onClickWhatsapp} className='bg-[#29A71A] w-full py-2 flex gap-3 items-center justify-center text-center rounded-2xl'>
                                 <img className='w-4' src='/whatsapp.png' />
-                                <span className='font-body text-sm font-bold text-white'>Hubungi Whatsapp</span>
+                                <span className='font-body text-sm font-bold text-white'>{t('detail-contact')} Whatsapp</span>
                             </button>
                             <button onClick={onClickFacebook} className='bg-[#1976D2] w-full py-2 flex gap-3 items-center justify-center text-center rounded-2xl'>
                                 <img className='w-4' src='/facebook.png' />
-                                <span className='font-body text-sm font-bold text-white'>Hubungi Facebook</span>
+                                <span className='font-body text-sm font-bold text-white'>{t('detail-contact')} Facebook</span>
                             </button>
                         </div>
                     </div>
