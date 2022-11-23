@@ -32,9 +32,7 @@ function Card({ data = {} }: Props) {
                     <p className='font-body text-sm'>{t('shipList-card-shipID')}</p>
                     <p className='font-body font-semibold w-fit'>{id}</p>
                 </div>
-                <div className='flex-1'>
-                    <img className='w-[100px]' src={imgUrl} />
-                </div>
+                <img className='w-[100px]' src={imgUrl} />
             </div>
             <hr className='border-[#DEDEDE]' />
             <div className='my-4 flex flex-col gap-4'>
