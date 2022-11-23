@@ -286,9 +286,28 @@ export default function useShipData(departureCity: string, arrivalCity: string, 
                 }
             }
         }
-        setData(newFiltered.sort((a,b) => {
-            return ('' + a[sortBy]).localeCompare(b[sortBy]);
-        }))
+        const compareAsc = ( a, b ) => {
+            if ( a[sortBy] < b[sortBy] ){
+              return -1;
+            }
+            if ( a[sortBy] > b[sortBy] ){
+              return 1;
+            }
+            return 0;
+        }
+
+        const compareDesc = ( a, b ) => {
+            return b[sortBy]-a[sortBy]
+        }
+        
+        let sortedData
+        if (sortBy === 'departureTime') {
+            sortedData = [...newFiltered].sort(compareAsc)
+        } else {
+            sortedData = [...newFiltered].sort(compareDesc)
+        }
+
+        setData(sortedData)
     }
 
     // TODO: fetch data
