@@ -7,7 +7,7 @@ function DetailSection() {
     const { t, i18n } = useTranslation()
     const currentShip = useContext(CurrentShipContext)
     const [data, setData] = useState({})
-    const [capacityPercentage, setCapacityPercentage] = useState(0)
+    const [capacityPercentage, setCapacityPercentage] = useState('')
     const [detailContentPosition, setDetailContentPosition] = useState('0')
 
     const isEmpty = (obj) => {
@@ -39,7 +39,8 @@ function DetailSection() {
     useEffect(() => {
         setData(currentShip.ship)
         const percentage = currentShip.ship.containerFilled/currentShip.ship.totalContainer*100
-        setCapacityPercentage(percentage)
+        const parsePercentage = parseFloat(percentage.toString()).toFixed(2)
+        setCapacityPercentage(parsePercentage)
 
         if (currentShip.showDetail === true) {
             setDetailContentPosition('right-0')
@@ -54,14 +55,16 @@ function DetailSection() {
                 <div className='bg-black z-10 opacity-50 fixed top-0 left-0 w-[100vw] h-[100vh] lg:hidden' />
             }
             {!isEmpty(data) && currentShip.showDetail &&
-                <div className={'detail-box-animation fixed w-full md:w-[60%] lg:w-[35%] z-30 h-full p-7 top-0 bg-white overflow-scroll ' + detailContentPosition}>
-                    <div className='relative'>
-                        <img className="w-6 absolute top-0 left-0 hover:cursor-pointer" onClick={handleCloseButtonClick} src='/previous.png' />
-                        <p className='font-body text-[24px] font-bold mb-7 text-right'>{data.id}</p>
+                <div className={'detail-box-animation fixed w-full md:w-[60%] lg:w-[35%] z-30 h-full xs:px-5 px-7 pt-4 py-7 top-0 bg-white overflow-scroll ' + detailContentPosition}>
+                    <div>
+                        <div className='mb-7 sticky -top-5 flex justify-between items-center bg-white w-full py-3 gap-3 z-20'>
+                            <img className="xs:w-5 xs:h-5 w-6 h-6 hover:cursor-pointer" onClick={handleCloseButtonClick} src='/previous.png' />
+                            <p className='font-body xs:text-[20px] text-[24px] font-bold text-right w-11/12'>{data.name}</p>
+                        </div>
                         <img className='mb-5' src={data.imgUrl} />
-                        <p className='font-body font-semibold text-[18px] mb-7'>{t('detail-capacity')}</p>
+                        <p className='font-body font-semibold text-[18px] mb-10'>{t('detail-capacity')}</p>
                         {/* Progress Bar */}
-                        <div className="w-full px-4">
+                        <div className="w-full px-2">
                             <div className="mb-7">
                                 <div className="bg-light relative h-[10px] w-full rounded-2xl">
                                     <div style={{width: `${capacityPercentage}%`}} className="bg-primary absolute top-0 left-0 h-full rounded-2xl">
@@ -78,29 +81,29 @@ function DetailSection() {
                             </div>
                         </div>
                         {/* First Row */}
-                        <div className='flex gap-5 mb-5 text-sm'>
-                            <div className='px-5 py-3 bg-[#F5F5F5] rounded-lg shadow-md'>
+                        <div className='flex xs:gap-3 gap-5 mb-5 text-sm'>
+                            <div className='xs:px-3 px-5 py-3 bg-[#F5F5F5] rounded-lg shadow-md'>
                                 <p className='font-body'>{t('detail-IMONumber')}</p>
                                 <p className='font-body font-bold'>{data.IMONumber}</p>
                             </div>
-                            <div className='px-5 py-3 bg-[#F5F5F5] rounded-lg shadow-md'>
+                            <div className='xs:px-3 px-5 py-3 bg-[#F5F5F5] rounded-lg shadow-md'>
                                 <p className='font-body'>{t('detail-ownerName')}</p>
                                 <p className='font-body font-bold'>{data.ownerName}</p>
                             </div>
                         </div>
                         <div className='flex gap-5 mb-5 text-sm'>
-                            <div className='px-5 py-3 bg-[#F5F5F5] rounded-lg shadow-md'>
+                            <div className='xs:px-3 px-5 py-3 bg-[#F5F5F5] rounded-lg shadow-md'>
                                 <p className='font-body'>{t('detail-filledContainer')}</p>
                                 <p className='font-body font-bold'>{`${data.containerFilled}/${data.totalContainer}`}</p>
                             </div>
-                            <div className='px-5 py-3 bg-[#F5F5F5] rounded-lg shadow-md'>
+                            <div className='xs:px-3 px-5 py-3 bg-[#F5F5F5] rounded-lg shadow-md'>
                                 <p className='font-body'>{t('shipList-card-containerLeft')}</p>
                                 <p className='font-body font-bold'>{data.containerLeft}</p>
                             </div>
                         </div>
                         {/* Second Row */}
                         <div className='flex gap-5 text-sm mb-7'>
-                            <div className='px-5 py-3 bg-[#F5F5F5] rounded-lg shadow-md'>
+                            <div className='xs:px-3 px-5 py-3 bg-[#F5F5F5] rounded-lg shadow-md'>
                                 <p className='font-body'>{t('detail-shipRoute')}</p>
                                 <div className='my-4 flex flex-col gap-4'>
                                     <div className='flex items-center gap-3'>
@@ -123,7 +126,7 @@ function DetailSection() {
                                     </div>
                                 </div>
                             </div>
-                            <div className='text-sm px-5 py-3 bg-[#F5F5F5] rounded-lg shadow-md h-fit'>
+                            <div className='text-sm xs:px-3 px-5 py-3 bg-[#F5F5F5] rounded-lg shadow-md h-fit'>
                                 <p className='font-body'>{t('shipList-card-schedule')}</p>
                                 <p className='font-body font-bold'>{`${data.departureTime}-${data.arrivalTime}`}</p>
                             </div>

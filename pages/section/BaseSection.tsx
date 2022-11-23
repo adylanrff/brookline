@@ -26,12 +26,21 @@ function BaseSection() {
         setArrivalCity('')
     }
 
+    const onReverse = () => {
+        const newDeparture = routeForm.arrival
+        const newArrival = routeForm.departure
+        setRouteForm({
+            departure: newDeparture,
+            arrival: newArrival
+        })
+    }
+
     return (
         <div>
             <p className='font-body text-[24px] font-bold mb-7'>{t('shipList-title')}</p>
             <div className='mb-8'>
                 <p className='font-body mb-1'>{t('shipList-form-route')}</p>
-                <SearchRouteForm onSubmit={onSearchFormSubmit} onReset={onReset} />
+                <SearchRouteForm onSubmit={onSearchFormSubmit} onReset={onReset} onReverse={onReverse} />
             </div>
             <CardList departureCity={departureCity} arrivalCity={arrivalCity} />
         </div>

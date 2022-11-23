@@ -37,7 +37,7 @@ export default function MainPage() {
       setShowDetail
     }}>
         <div className="p-0 min-h-screen bg-[#E7F4FF] w-full lg:w-[calc(100%_-_13rem)] lg:ml-52 mt-14 lg:mt-0">
-          <div className={'px-7 py-5 lg:p-7 ' + basePageWidth}>
+          <div className={'xs:px-5 px-7 pt-5 pb-9 lg:pt-7 ' + basePageWidth}>
             <BaseSection />
           </div>
           <DetailSection />

@@ -5,6 +5,7 @@ import styles from '../styles/Home.module.css'
 import MainPage from './MainPage'
 import Header from './components/Header'
 import LanguagePage from './LanguagePage'
+import { useTranslation } from "react-i18next";
 
 type RouteFormType = {
   routeForm: any,
@@ -17,6 +18,7 @@ export const RouteFormContext = React.createContext<RouteFormType>({
 })
 
 export default function Home() {
+  const { t, i18n } = useTranslation()
   const [showSideBarMobile, setShowSideBarMobile] = useState(false)
   const [isActiveSideBar, setIsActiveSideBar] = useState({
     home: true,
@@ -26,11 +28,20 @@ export default function Home() {
     departure: '',
     arrival: ''
   })
+  const [headTitle, setHeadTitle] = useState('Brookline')
+
+  useEffect(() => {
+    if (isActiveSideBar.home) {
+      setHeadTitle('Brookline | ' + t('sidebar-shipList'))
+    } else if (isActiveSideBar.language) {
+      setHeadTitle('Brookline | ' + t('language-setting-title'))
+    }
+  }, [isActiveSideBar, i18n.language])
 
   return (
     <div className={styles.container}>
       <Head>
-        <title>Brookline</title>
+        <title>{headTitle}</title>
       </Head>
       <main>
         <RouteFormContext.Provider value={{
@@ -38,7 +49,7 @@ export default function Home() {
           setRouteForm
         }}>
           <div className='flex flex-row flex-1'>
-            <div className='px-7 py-4 lg:p-0 lg:hidden fixed top-0 left-0 w-full bg-[#E7F4FF]'>
+            <div className='xs:px-5 px-7 py-4 lg:p-0 lg:hidden fixed top-0 left-0 w-full bg-[#E7F4FF]'>
               <Header setShowSideBarMobile={setShowSideBarMobile} />
             </div>
             <Sidebar showSideBarMobile={showSideBarMobile} setShowSideBarMobile={setShowSideBarMobile} isActive={isActiveSideBar} setIsActive={setIsActiveSideBar} />
