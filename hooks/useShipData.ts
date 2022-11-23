@@ -242,7 +242,7 @@ export default function useShipData(departureCity: string, arrivalCity: string):
     const [data, setData] = useState<ShipCard[]>();
 
     const mapData = (filtered, departure, arrival) => {
-        let newFiltered: ShipData[] = []
+        let newFiltered: ShipCard[] = []
         for (let i = 0; i < filtered.length; i++) {
             const routes = filtered[i].routes || []
             for (let j = 0; j < routes.length; j++) {
@@ -285,7 +285,9 @@ export default function useShipData(departureCity: string, arrivalCity: string):
                 }
             }
         }
-        setData(newFiltered)
+        setData(newFiltered.sort((a,b) => {
+            return ('' + a.departureTime).localeCompare(b.departureTime);
+        }))
     }
 
     // TODO: fetch data
