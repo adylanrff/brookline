@@ -54,7 +54,7 @@ function DetailSection() {
                 <div className='bg-black z-10 opacity-50 fixed top-0 left-0 w-[100vw] h-[100vh] lg:hidden' />
             }
             {!isEmpty(data) && currentShip.showDetail &&
-                <div className={'fixed w-full md:w-[60%] lg:w-[35%] z-30 h-full p-7 top-0 bg-white overflow-scroll detail-box-animation ' + detailContentPosition}>
+                <div className={'detail-box-animation fixed w-full md:w-[60%] lg:w-[35%] z-30 h-full p-7 top-0 bg-white overflow-scroll ' + detailContentPosition}>
                     <div className='relative'>
                         <img className="w-6 absolute top-0 left-0 hover:cursor-pointer" onClick={handleCloseButtonClick} src='/previous.png' />
                         <p className='font-body text-[24px] font-bold mb-7 text-right'>{data.id}</p>
