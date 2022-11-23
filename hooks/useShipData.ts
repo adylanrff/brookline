@@ -1,7 +1,8 @@
+import { Dispatch, SetStateAction} from "react";
 import { useEffect, useState } from "react";
 import { ShipCard, ShipData } from "../types/ship";
 
-export default function useShipData(departureCity: string, arrivalCity: string): [ShipCard[]] {
+export default function useShipData(departureCity: string, arrivalCity: string, sortBy: string): [ShipCard[], Dispatch<SetStateAction<ShipCard[]>>] {
     const defaultData: ShipData[] = [
         {
             id: "L5HYXX8FKV",
@@ -285,9 +286,28 @@ export default function useShipData(departureCity: string, arrivalCity: string):
                 }
             }
         }
-        setData(newFiltered.sort((a,b) => {
-            return ('' + a.departureTime).localeCompare(b.departureTime);
-        }))
+        const compareAsc = ( a, b ) => {
+            if ( a[sortBy] < b[sortBy] ){
+              return -1;
+            }
+            if ( a[sortBy] > b[sortBy] ){
+              return 1;
+            }
+            return 0;
+        }
+
+        const compareDesc = ( a, b ) => {
+            return b[sortBy]-a[sortBy]
+        }
+        
+        let sortedData
+        if (sortBy === 'departureTime') {
+            sortedData = [...newFiltered].sort(compareAsc)
+        } else {
+            sortedData = [...newFiltered].sort(compareDesc)
+        }
+
+        setData(sortedData)
     }
 
     // TODO: fetch data
@@ -305,5 +325,5 @@ export default function useShipData(departureCity: string, arrivalCity: string):
         mapData(filteredShipData, departureCity, arrivalCity)
     }, [departureCity, arrivalCity])
 
-    return [data]
+    return [data, setData]
 }

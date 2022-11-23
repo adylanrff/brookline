@@ -1,12 +1,11 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import useShipData from '../../hooks/useShipData'
 import Card from './Card'
 import { useTranslation } from "react-i18next";
 
 
-function CardList({ departureCity, arrivalCity }) {
+function CardList({ data }) {
     const { t } = useTranslation()
-    const [data] = useShipData(departureCity, arrivalCity)
 
     const renderContent = () => {
         if (data?.length === 0) {

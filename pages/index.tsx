@@ -9,12 +9,16 @@ import { useTranslation } from "react-i18next";
 
 type RouteFormType = {
   routeForm: any,
-  setRouteForm: any
+  setRouteForm: any,
+  sortBy: any,
+  setSortBy: any
 }
 
 export const RouteFormContext = React.createContext<RouteFormType>({
   routeForm: {},
-  setRouteForm: () => {}
+  setRouteForm: () => {},
+  sortBy: {},
+  setSortBy: () => {}
 })
 
 export default function Home() {
@@ -29,6 +33,7 @@ export default function Home() {
     arrival: ''
   })
   const [headTitle, setHeadTitle] = useState('Brookline')
+  const [sortBy, setSortBy] = useState('departureTime')
 
   useEffect(() => {
     if (isActiveSideBar.home) {
@@ -47,7 +52,9 @@ export default function Home() {
       <main>
         <RouteFormContext.Provider value={{
           routeForm,
-          setRouteForm
+          sortBy,
+          setRouteForm,
+          setSortBy
         }}>
           <div className='flex flex-row flex-1'>
             <div className='xs:px-5 px-7 py-4 lg:p-0 lg:hidden fixed top-0 left-0 w-full bg-[#E7F4FF]'>
