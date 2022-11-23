@@ -1,0 +1,21 @@
+{
+    "sidebar-shipList": "List of Ships",
+    "sidebar-language": "Language",
+    "shipList-title": "Ship Container Management",
+    "shipList-form-route": "Route",
+    "shipList-form-chooseDeparture": "Choose Departure City",
+    "shipList-form-chooseArrival": "Choose Arrival City",
+    "shipList-form-searchButton": "Search",
+    "shipList-form-resetButton": "Reset",
+    "shipList-card-shipID": "Ship ID",
+    "shipList-card-schedule": "Schedule",
+    "shipList-card-containerLeft": "Container Left",
+    "shipList-card-sorry": "Sorry, there are no ships available for this route",
+    "detail-capacity": "Ship Capacity",
+    "detail-IMONumber": "IMO Number",
+    "detail-ownerName": "Ship's Owner Name",
+    "detail-filledContainer": "Filled Container",
+    "detail-shipRoute": "Ship's Route",
+    "detail-contact": "Contact via",
+    "language-setting-title": "Language Settings"
+}

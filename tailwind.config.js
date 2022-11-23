@@ -1,4 +1,6 @@
 /** @type {import('tailwindcss').Config} */
+const defaultTheme = require('tailwindcss/defaultTheme')
+
 module.exports = {
   content: [
     "./pages/**/*.{js,ts,jsx,tsx}",
@@ -6,6 +8,10 @@ module.exports = {
     "./*.html", "./ecommerce/*.html", "./assets/**/*.js"
   ],
   theme: {
+    screens: {
+      'xs': {'max': '300px'},
+      ...defaultTheme.screens,
+    },
     fontFamily: {
       'title': ["Grand Hotel", 'cursive'],
       'body': ["Nunito", 'cursive']

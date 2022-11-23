@@ -1,28 +1,24 @@
-import React, { useEffect, useState } from 'react'
+import React, { useContext, useState } from 'react'
 import SearchRouteForm from '../components/SearchRouteForm'
+import { RouteFormContext } from '..';
 import CardList from '../components/CardList'
+import { useTranslation } from "react-i18next";
 
 function BaseSection() {
-    const [form, setForm] = useState({
-        departure: '',
-        arrival: ''
-    })
-    const [departureCity, setDepartureCity] = useState('')
-    const [arrivalCity, setArrivalCity] = useState('')
+    const { t } = useTranslation();
+    const { routeForm, setRouteForm } = useContext(RouteFormContext)
 
-    const onSelectChange = (e) => {
-        const {name, value} = e.target
-        setForm({...form, [name]: value})
-    }
+    const [departureCity, setDepartureCity] = useState(routeForm.departure)
+    const [arrivalCity, setArrivalCity] = useState(routeForm.arrival)
 
     const onSearchFormSubmit = (e) => {
         e.preventDefault()
-        setDepartureCity(form.departure)
-        setArrivalCity(form.arrival)
+        setDepartureCity(routeForm.departure)
+        setArrivalCity(routeForm.arrival)
     }
 
     const onReset = () => {
-        setForm({
+        setRouteForm({
             departure: '',
             arrival: ''
         })
@@ -30,12 +26,21 @@ function BaseSection() {
         setArrivalCity('')
     }
 
+    const onReverse = () => {
+        const newDeparture = routeForm.arrival
+        const newArrival = routeForm.departure
+        setRouteForm({
+            departure: newDeparture,
+            arrival: newArrival
+        })
+    }
+
     return (
         <div>
-            <p className='font-body text-[24px] font-bold mb-7'>Manajemen Kontainer Kapal</p>
+            <p className='font-body text-[24px] font-bold mb-7'>{t('shipList-title')}</p>
             <div className='mb-8'>
-                <p className='font-body mb-1'>Rute</p>
-                <SearchRouteForm cities={form} onSelectChange={onSelectChange} onSubmit={onSearchFormSubmit} onReset={onReset} />
+                <p className='font-body mb-1'>{t('shipList-form-route')}</p>
+                <SearchRouteForm onSubmit={onSearchFormSubmit} onReset={onReset} onReverse={onReverse} />
             </div>
             <CardList departureCity={departureCity} arrivalCity={arrivalCity} />
         </div>
