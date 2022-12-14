@@ -333,5 +333,5 @@ function getMockPrice(): string {
     const firstPrice = Math.random() * (2-1.5)
     const priceNumber = parseFloat(firstPrice.toFixed(2)) + 1.5
 
-    return `Rp ${(priceNumber * 10e6).toLocaleString("id")}/TEUs`
+    return `Rp${(priceNumber * 10e5).toLocaleString("id")}/TEUs`
 }

@@ -97,7 +97,7 @@ function DetailSection() {
                             </div>
                         </div>
                         {/* Second Row */}
-                        <div className='flex gap-5 text-sm mb-7'>
+                        <div className='flex gap-5 mb-5 text-sm'>
                             <div className='xs:px-3 px-5 py-3 bg-[#F5F5F5] rounded-lg shadow-md'>
                                 <p className='font-body'>{t('detail-shipRoute')}</p>
                                 <div className='my-4 flex flex-col gap-4'>
