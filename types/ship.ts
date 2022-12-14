@@ -25,6 +25,7 @@ export interface ShipData {
     facebookCP?: string;
     imgUrl?: string;
     routes?: Route[];
+    price?: string;
 }
 
 export interface ShipCard {
@@ -44,4 +45,5 @@ export interface ShipCard {
     containerLeft?: number;
     totalContainer?: number;
     containerFilled?: number;
+    price?: string;
 }

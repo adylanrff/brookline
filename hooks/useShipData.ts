@@ -279,7 +279,8 @@ export default function useShipData(departureCity: string, arrivalCity: string, 
                             arrivalTime: scheduleData.arrivalTime,
                             containerLeft: scheduleData.containerLeft,
                             totalContainer: scheduleData.totalContainer,
-                            containerFilled: scheduleData.containerFilled
+                            containerFilled: scheduleData.containerFilled,
+                            price: getMockPrice()
                         }
                         newFiltered.push(data)
                     }
@@ -326,4 +327,11 @@ export default function useShipData(departureCity: string, arrivalCity: string, 
     }, [departureCity, arrivalCity])
 
     return [data, setData]
+}
+
+function getMockPrice(): string {
+    const firstPrice = Math.random() * (2-1.5)
+    const priceNumber = parseFloat(firstPrice.toFixed(2)) + 1.5
+
+    return `Rp ${(priceNumber * 10e6).toLocaleString("id")}/TEUs`
 }

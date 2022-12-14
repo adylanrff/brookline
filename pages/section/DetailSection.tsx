@@ -126,6 +126,12 @@ function DetailSection() {
                                 <p className='font-body font-bold'>{`${data.departureTime}-${data.arrivalTime}`}</p>
                             </div>
                         </div>
+                        <div className='flex gap-5 text-sm mb-7'>
+                            <div className='text-sm xs:px-3 px-5 py-3 bg-[#F5F5F5] rounded-lg shadow-md h-fit'>
+                                <p className='font-body'>{t('detail-price')}</p>
+                                <p className='font-body font-bold'>{`${data.price}`}</p>
+                            </div>
+                        </div>
                         {/* Buttons */}
                         <div className='flex flex-col gap-3'>
                             <button onClick={onClickWhatsapp} className='bg-[#29A71A] w-full py-2 flex gap-3 items-center justify-center text-center rounded-2xl'>
